@@ -8,8 +8,10 @@
 <style lang="less" scoped>
   @base: #f938ab;
   .less{
-    color: #f85f;
+    color: #f85f65;
     display: flex;
+    transition :transform 1s;
+    -moz-animation: 5;
   }
   .loh{
     color: @base;
