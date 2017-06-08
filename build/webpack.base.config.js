@@ -49,7 +49,20 @@ module.exports = {
               fallback: 'vue-style-loader'
             })
           : ['vue-style-loader', 'css-loader']
-      }
+      },
+			{
+				test: /\.less$/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader"
+				}, {
+					loader: "less-loader", options: {
+						strictMath: true,
+						noIeCompat: true
+					}
+				}]
+			}
     ]
   },
   performance: {
@@ -68,4 +81,4 @@ module.exports = {
     : [
         new FriendlyErrorsPlugin()
       ]
-}
+};

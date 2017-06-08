@@ -1,5 +1,6 @@
 <template>
   <div class="item-view" v-if="item">
+      <test>54</test>
     <template v-if="item">
       <div class="item-view-header">
         <a :href="item.url" target="_blank">
@@ -30,10 +31,11 @@
 <script>
 import Spinner from '../components/Spinner.vue'
 import Comment from '../components/Comment.vue'
+import Test from '../components/Tests.vue';
 
 export default {
   name: 'item-view',
-  components: { Spinner, Comment },
+  components: { Spinner, Comment, Test },
 
   data: () => ({
     loading: true

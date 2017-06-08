@@ -1,5 +1,6 @@
 <template>
   <li class="news-item">
+    <test>788</test>
     <span class="score">{{ item.score }}</span>
     <span class="title">
       <template v-if="item.url">
@@ -27,11 +28,13 @@
 </template>
 
 <script>
-import { timeAgo } from '../util/filters'
+import { timeAgo } from '../util/filters';
+import Test from './Tests.vue';
 
 export default {
   name: 'news-item',
   props: ['item'],
+  components: { Test },
   // http://ssr.vuejs.org/en/caching.html#component-level-caching
   serverCacheKey: ({ item: { id, __lastUpdated, time }}) => {
     return `${id}::${__lastUpdated}::${timeAgo(time)}`
