@@ -61,6 +61,8 @@ module.exports = {
 						strictMath: true,
 						noIeCompat: true
 					}
+				},{
+				  loader: "postcss-loader"
 				}]
 			}
     ]

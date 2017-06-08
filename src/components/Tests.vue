@@ -5,10 +5,11 @@
   </div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
   @base: #f938ab;
   .less{
     color: #f85f;
+    display: flex;
   }
   .loh{
     color: @base;
