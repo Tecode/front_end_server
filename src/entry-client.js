@@ -4,13 +4,13 @@ import { createApp } from './app'
 import ProgressBar from './components/ProgressBar.vue'
 
 // global progress bar
-const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount()
-document.body.appendChild(bar.$el)
+const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount();
+document.body.appendChild(bar.$el);
 
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
   beforeRouteUpdate (to, from, next) {
-    const { asyncData } = this.$options
+    const { asyncData } = this.$options;
     if (asyncData) {
       asyncData({
         store: this.$store,
@@ -20,9 +20,9 @@ Vue.mixin({
       next()
     }
   }
-})
+});
 
-const { app, router, store } = createApp()
+const { app, router, store } = createApp();
 
 // prime the store with server-initialized state.
 // the state is determined during SSR and inlined in the page markup.
@@ -40,23 +40,23 @@ router.onReady(() => {
   router.beforeResolve((to, from, next) => {
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)
-    let diffed = false
+    let diffed = false;
     const activated = matched.filter((c, i) => {
       return diffed || (diffed = (prevMatched[i] !== c))
-    })
+    });
     if (!activated.length) {
       return next()
     }
-    bar.start()
+    bar.start();
     Promise.all(activated.map(c => {
       if (c.asyncData) {
         return c.asyncData({ store, route: to })
       }
     })).then(() => {
-      bar.finish()
+      bar.finish();
       next()
     }).catch(next)
-  })
+  });
 
   // actually mount to DOM
   app.$mount('#app')
