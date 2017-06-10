@@ -1,23 +1,25 @@
 <template>
-    <div>
+    <div class="home_page">
         <banner></banner>
-        <div class="container margin_top60">
+        <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <about-me></about-me>
+                </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
 import { watchList } from '../api'
-import Item from '../components/Item.vue'
+import AboutMe from '../components/homePage/AboutMe.vue'
 import Banner from '../components/common/Banner.vue'
 
 export default {
   name: 'item-list',
   components: {
-    Item,
+	AboutMe,
 	Banner,
   },
 
@@ -84,6 +86,8 @@ export default {
 
 <style lang="less">
     @import "../lib/style/global";
+    .home_page{
 
+    }
 
 </style>
