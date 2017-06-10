@@ -15,5 +15,8 @@
   }
   .loh{
     color: @base;
+      &:hover{
+          color: blueviolet;
+      }
   }
 </style>
