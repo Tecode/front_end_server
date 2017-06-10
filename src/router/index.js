@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import HomePage from '../views/HomePage.vue';
 
 Vue.use(Router);
 
@@ -13,7 +14,7 @@ export function createRouter () {
     mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: [
-      { path: '/', component: createListView('top') },
+      { path: '/', component: HomePage },
       { path: '/new/:page(\\d+)?', component: createListView('new') },
       { path: '/show/:page(\\d+)?', component: createListView('show') },
       { path: '/ask/:page(\\d+)?', component: createListView('ask') },

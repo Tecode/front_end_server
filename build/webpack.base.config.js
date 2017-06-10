@@ -48,8 +48,12 @@ module.exports = {
               use: 'css-loader?minimize',
               fallback: 'vue-style-loader'
             })
-          : ['vue-style-loader', 'css-loader', 'postcss-loader']
+          : ['vue-style-loader', 'css-loader']
       },
+			{
+				test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+				loader: 'file-loader'
+			},
 			{
 				test: /\.less$/,
 				use: [{

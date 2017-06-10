@@ -1,8 +1,14 @@
 {
   "presets": [
-    ["env", { "modules": false }, "vue-app"]
+    ["env", { "modules": false }]
   ],
   "plugins": [
-    "syntax-dynamic-import"
+    "syntax-dynamic-import",
+    ["component", [
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-default"
+      }
+    ]]
   ]
 }
