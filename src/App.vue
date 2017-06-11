@@ -7,14 +7,14 @@
                         <router-link to="/" exact>
                             <div class="logo_lage"></div>
                         </router-link>
-                        <router-link class="nav_link active" to="/">首页</router-link>
-                        <router-link class="nav_link" to="/new">发现</router-link>
-                        <router-link class="nav_link" to="/show">分享</router-link>
-                        <router-link class="nav_link" to="/ask">留言</router-link>
-                        <router-link class="nav_link" to="/job">更新日志</router-link>
+                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.length === 1}" to="/">首页</router-link>
+                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}" to="/discoverer">发现</router-link>
+                        <router-link class="nav_link" to="/share">分享</router-link>
+                        <router-link class="nav_link" to="/message">留言</router-link>
+                        <router-link class="nav_link" to="/updatelog">更新日志</router-link>
                         <div class="pull-right">
-                        <a href="javascript:;" class="nav_link">登录</a>
-                        <a href="javascript:;" class="nav_link">注册</a>
+                        <a href="https://www.soscoon.com/login" class="nav_link">登录</a>
+                        <a href="https://www.soscoon.com/register" class="nav_link">注册</a>
                         </div>
                         <!--<div class="pull-right">-->
                             <!--<a class="nav_link">欢迎你，aming!</a>-->
@@ -28,7 +28,25 @@
             </transition>
     </div>
 </template>
-
+<script>
+	export default {
+		name: 'comment',
+		props: ['id'],
+        beforeRouteUpdate: function () {
+            console.log(this.$route.fullPath);
+        },
+		created: function () {
+			console.log(this.$route);
+		},
+		data () {
+			return {
+			    fullPath: this.$route.fullPath
+			}
+		},
+		computed: {},
+		methods: {}
+	}
+</script>
 <style lang="less">
     @import "lib/style/global";
     @import "lib/style/color";
@@ -36,6 +54,7 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
     .header{
+        border-bottom:1px solid #ffcd19;
         background-color: @background-color50;
         position: fixed;
         z-index: 999;
