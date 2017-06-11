@@ -87,4 +87,9 @@
             }
         }
     }
+    @media (max-width: 992px) {
+        .all_contents{
+            margin-right: 0;
+        }
+    }
 </style>

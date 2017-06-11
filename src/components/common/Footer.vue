@@ -38,19 +38,20 @@
 <style lang="less" scoped>
     @import "../../lib/style/color";
     .footer_coustm{
+        min-width: 640px;
         .footer_coustm_box{
-            width: 584px;
+            width: 600px;
             margin: 0 auto;
+            dd{
+                padding: 1px 0;
+            }
+            li{
+                float: left;
+            }
         }
         background-color: @color556;
         padding: 40px 0;
         margin: 45px 0;
-        dd{
-            padding: 1px 0;
-        }
-        li{
-            float: left;
-        }
         .QR_qq{
             background: url("../../imgs/qq_QRcode.jpg")0 0 no-repeat;
             background-size: 128px;

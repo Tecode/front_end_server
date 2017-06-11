@@ -58,8 +58,10 @@
             text-decoration: none;
         }
         .nav_link{
-            padding: 20px 11px 20px 11px;
+            padding: 0 11px 0 11px;
+            height: 60px;
             display: block;
+            line-height: 4em;
             &:hover{
                 background-color: @background-color150;
                 color: @white;
