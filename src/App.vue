@@ -12,13 +12,13 @@
                         <router-link class="nav_link" to="/show">分享</router-link>
                         <router-link class="nav_link" to="/ask">留言</router-link>
                         <router-link class="nav_link" to="/job">更新日志</router-link>
-                        <!--<div class="pull-right">-->
-                        <!--<a href="javascript:;" class="nav_link">登录</a>-->
-                        <!--<a href="javascript:;" class="nav_link">注册</a>-->
-                        <!--</div>-->
                         <div class="pull-right">
-                            <a class="nav_link">欢迎你，aming!</a>
+                        <a href="javascript:;" class="nav_link">登录</a>
+                        <a href="javascript:;" class="nav_link">注册</a>
                         </div>
+                        <!--<div class="pull-right">-->
+                            <!--<a class="nav_link">欢迎你，aming!</a>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
