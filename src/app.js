@@ -6,15 +6,12 @@ import { sync } from 'vuex-router-sync'
 import titleMixin from './util/title'
 import * as filters from './util/filters'
 // 引入饿了吗的ui
-import 'element-ui/lib/theme-default/row.css'
-import 'element-ui/lib/theme-default/col.css'
+import 'element-ui/lib/theme-default/pagination.css'
 import {
-	Row,
-	Col,
+	Pagination,
 } from 'element-ui'
 
-Vue.use(Row);
-Vue.use(Col,);
+Vue.use(Pagination);
 
 // mixin for handling title
 Vue.mixin(titleMixin);

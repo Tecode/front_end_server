@@ -6,21 +6,30 @@
                 <div class="col-md-12">
                     <about-me></about-me>
                 </div>
+                <div class="col-md-8 col-lg-9">
+                    <all-contents></all-contents>
+                </div>
+                <div class="col-md-4 col-lg-3">3</div>
             </div>
         </div>
+        <footer-custom></footer-custom>
     </div>
 </template>
 
 <script>
 import { watchList } from '../api'
-import AboutMe from '../components/homePage/AboutMe.vue'
 import Banner from '../components/common/Banner.vue'
+import FooterCustom from '../components/common/Footer.vue'
+import AboutMe from '../components/homePage/AboutMe.vue'
+import AllContents from '../components/homePage/AllContents.vue'
 
 export default {
   name: 'item-list',
   components: {
 	AboutMe,
 	Banner,
+	AllContents,
+	FooterCustom,
   },
 
   props: {
@@ -85,7 +94,7 @@ export default {
 </script>
 
 <style lang="less">
-    @import "../lib/style/global";
+    @import "../lib/style/color";
     .home_page{
 
     }

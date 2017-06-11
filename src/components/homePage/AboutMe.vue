@@ -23,7 +23,7 @@
 </script>
 
 <style lang="less" scoped>
-    @import "../../lib/style/global";
+    @import "../../lib/style/color";
     .about_me{
         position: relative;
         background-color: @white100;
@@ -40,6 +40,7 @@
         p{
             padding: 0 15px 0 15px;
             line-height: 1.5em;
+            font-size: 15px;
         }
         .button{
             text-align: right;
