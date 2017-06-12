@@ -2,29 +2,40 @@
     <div class="banner">
         <div class="banner_text"></div>
         <div class="timer_user">
-            <h1 class="pull-left">18:30:03</h1>
+            <h1 class="pull-left">{{currentTime}}</h1>
             <div class="pull-left user">
-                <p>傍晚好，阿明</p>
-                <p>2017-05-07</p>
+                <p>{{currentStatus}}好，阿明</p>
+                <p>{{currentDate}}</p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+	import moment from 'moment';
+	moment.locale('zh-cn');
 	export default {
 		data () {
 			return {
-				open: true
+				currentTime: '00:00:00',
+				currentDate: '0000-00-00',
+				currentStatus: '早上'
 			}
 		},
 		computed: {},
-		methods: {}
+		created: function () {
+			setInterval(() => {
+				this.currentTime = moment().format('h:mm:ss');
+				this.currentDate = moment().format('YYYY-MM-DD');
+				this.currentStatus = moment().format('a');
+			}, 1000);
+		}
 	}
 </script>
 
 <style lang="less" scoped>
     @import "../../lib/style/global";
+
     .banner {
         background: url("../../imgs/banner_image.jpg") 0 0 no-repeat;
         background-size: cover;
@@ -33,8 +44,8 @@
         margin-top: 60px;
         min-width: 640px;
         position: relative;
-        .banner_text{
-            background: url("../../imgs/motto_text.png")0 0 no-repeat;
+        .banner_text {
+            background: url("../../imgs/motto_text.png") 0 0 no-repeat;
             width: 600px;
             height: 268px;
             background-size: 600px;
@@ -43,7 +54,7 @@
             left: 50%;
             margin-left: -300px;
         }
-        .timer_user{
+        .timer_user {
             position: absolute;
             width: 340px;
             height: 75px;
@@ -53,12 +64,12 @@
             background-color: @background-color350;
             border-radius: 999px;
             box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.15);
-            h1{
+            h1 {
                 font-weight: lighter;
                 font-size: 50px;
                 padding: 0 20px 0 20px;
             }
-            div{
+            div {
                 padding: 15px 0 0 0;
             }
         }

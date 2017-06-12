@@ -43,31 +43,11 @@
 		},
 		data () {
 			return {
-				transition: 'slide-right',
-				displayedPage: Number(this.$store.state.route.params.page) || 1,
-				displayedItems: this.$store.getters.activeItems
+				currentTime: 'slide-right',
 			}
 		},
 
 		computed: {},
-
-//  beforeMount () {
-//    if (this.$root._isMounted) {
-//      this.loadItems(this.page)
-//    }
-//    // watch the current list for realtime updates
-//    this.unwatchList = watchList(this.type, ids => {
-//      this.$store.commit('SET_LIST', { type: this.type, ids })
-//      this.$store.dispatch('ENSURE_ACTIVE_ITEMS').then(() => {
-//        this.displayedItems = this.$store.getters.activeItems
-//      })
-//    })
-//  },
-
-//  beforeDestroy () {
-//    this.unwatchList()
-//  },
-
 		watch: {
 			page (to, from) {
 				this.loadItems(to, from)
