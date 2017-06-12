@@ -11,6 +11,9 @@
             </h3>
             <p>博客网站使用的后台是php语言，用了流行的Laravel框架。使用了larevel+digoApi+JWT对网站进行开发。</p>
         </div>
+        <div class="read_more">
+            <span>查看更多</span>
+        </div>
     </div>
 </template>
 
@@ -49,7 +52,7 @@
                 padding-bottom: 15px;
                 span,i{
                     float: left;
-                    color: @color400;
+                    color: @color557;
                 }
                 .lable_icon_msg{
                     display: block;
@@ -71,6 +74,24 @@
             p{
                 line-height: 1.5em;
                 font-size: 15px;
+                color: @color400;
+            }
+        }
+        .read_more{
+            font-size: 14px;
+            text-align: right;
+            margin: 0 10px 20px 0;
+            span{
+                padding: 3px 18px;
+                border: 1px solid @color555;
+                color: @color555;
+                border-radius: @border-radius6;
+                transition: all 0.5s;
+                cursor: pointer;
+                &:hover{
+                    background-color: @color555;
+                    color: @white;
+                }
             }
         }
     }

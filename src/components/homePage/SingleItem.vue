@@ -93,6 +93,9 @@
                 height: 5.3em;
                 overflow: hidden;
                 text-overflow: ellipsis;
+
+                transition: all 0.4s;
+                transition-timing-function: ease-out;
                 h3{
                     font-size: 16px;
                     font-weight: normal;

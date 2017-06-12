@@ -39,6 +39,8 @@
         margin-top: 20px;
         .pull-left{
             width: 23.5%;
+            transition: all 0.4s;
+            transition-timing-function: cubic-bezier(0.42, 0, 0, 1.43);
         }
         .item_center_1{
             margin: 0 2%;
