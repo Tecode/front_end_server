@@ -30,14 +30,14 @@
 </template>
 <script>
 	export default {
-		name: 'comment',
+		name: 'app',
 		props: ['id'],
-        beforeRouteUpdate: function () {
-            console.log(this.$route.fullPath);
-        },
-		created: function () {
-			console.log(this.$route);
-		},
+//        beforeRouteUpdate: function () {
+//            console.log(this.$route.fullPath);
+//        },
+//		created: function () {
+//			console.log(this.$route);
+//		},
 		data () {
 			return {
 			    fullPath: this.$route.fullPath

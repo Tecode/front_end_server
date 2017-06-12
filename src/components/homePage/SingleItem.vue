@@ -90,7 +90,7 @@
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 3;
                 width: 84%;
-                height: 80px;
+                height: 5.3em;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 h3{
