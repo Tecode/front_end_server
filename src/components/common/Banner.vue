@@ -25,7 +25,7 @@
 		computed: {},
 		created: function () {
 			setInterval(() => {
-				this.currentTime = moment().format('h:mm:ss');
+				this.currentTime = moment().format('HH:mm:ss');
 				this.currentDate = moment().format('YYYY-MM-DD');
 				this.currentStatus = moment().format('a');
 			}, 1000);
