@@ -94,6 +94,10 @@
         }
     }
     .fade-enter-active, .fade-leave-active {
-        transition: all .2s ease
+        transition: all .2s ease-in;
+    }
+    .fade-enter, .fade-leave-active {
+        transform: translateY(20px);
+        opacity: 0;
     }
 </style>

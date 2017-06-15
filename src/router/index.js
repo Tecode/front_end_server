@@ -5,7 +5,7 @@ import HomePage from '../views/HomePage.vue';
 import UpdateLog from '../views/UpdateLog.vue';
 import Message from '../views/Message.vue';
 import Share from '../views/Share.vue';
-import Discoverer from '../views/Discoverer.vue';
+import Discover from '../views/Discover.vue';
 
 Vue.use(Router);
 
@@ -20,7 +20,7 @@ export function createRouter () {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       { path: '/', component: HomePage },
-      { path: '/discoverer/:page(\\d+)?', component: Discoverer },
+      { path: '/discover/:page(\\d+)?', component: Discover },
       { path: '/share/:page(\\d+)?', component: Share },
       { path: '/message/:page(\\d+)?', component: Message },
       { path: '/updatelog/:page(\\d+)?', component: UpdateLog },
