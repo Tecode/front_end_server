@@ -8,7 +8,7 @@
                             <div class="logo_lage"></div>
                         </router-link>
                         <router-link class="nav_link" v-bind:class="{'active' :fullPath.length === 1}" to="/">首页</router-link>
-                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}" to="/discoverer">发现</router-link>
+                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}" to="/discover">发现</router-link>
                         <router-link class="nav_link" to="/share">分享</router-link>
                         <router-link class="nav_link" to="/message">留言</router-link>
                         <router-link class="nav_link" to="/updatelog">更新日志</router-link>

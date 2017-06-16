@@ -28,16 +28,16 @@
                     :total="50">
             </el-pagination>
         </div>
-</div>
+    </div>
 </template>
 
 <script>
-    import SingleItem from './SingleItem.vue';
+	import SingleItem from '../common/SingleItem.vue';
 	export default {
 		name: 'AllContents',
-			components: {
-				SingleItem
-			},
+		components: {
+			SingleItem
+		},
 		data () {
 			return {
 				open: true
@@ -50,26 +50,27 @@
 
 <style lang="less" scoped>
     @import "../../lib/style/color";
-    .all_contents{
+
+    .all_contents {
         background-color: @white200;
         border-radius: @border-radius6;
         box-shadow: @box-shadow26;
         margin-right: 10px;
         padding-bottom: 40px;
-        .page-pagination{
+        .page-pagination {
             padding: 30px 0 0 0;
         }
-        .top_header{
+        .top_header {
             padding: 10px 15px 5px 15px;
             border-bottom: 1px solid @white300;
-            .icon_info{
+            .icon_info {
                 display: block;
                 width: 26px;
                 height: 26px;
                 background: url("../../imgs/icon_info.png") 4px 3px no-repeat;
                 background-size: 18px;
             }
-            .more{
+            .more {
                 -webkit-appearance: none;
                 background: none;
                 color: @color500;
@@ -79,7 +80,7 @@
                 transition: all 0.5s;
                 cursor: pointer;
                 outline: none;
-                &:hover{
+                &:hover {
                     background-color: @background-color350;
                     color: @white100;
                     border: 1px solid @background-color350;
@@ -87,8 +88,9 @@
             }
         }
     }
+
     @media (max-width: 992px) {
-        .all_contents{
+        .all_contents {
             margin-right: 0;
         }
     }
