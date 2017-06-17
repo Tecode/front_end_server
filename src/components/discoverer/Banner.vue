@@ -29,12 +29,13 @@
 			}
 		},
 		mounted() {
-			const canvasBox = document.getElementById('canvasBox');
-			starrySky({
-				width: canvasBox.offsetWidth,
-				height: canvasBox.offsetHeight,
-				canvasElemet: 'canvasEl'
-			});
+			// canvas绘图
+//			const canvasBox = document.getElementById('canvasBox');
+//			starrySky({
+//				width: canvasBox.offsetWidth,
+//				height: canvasBox.offsetHeight,
+//				canvasElemet: 'canvasEl'
+//			});
 		},
 		computed: {},
 		methods: {}

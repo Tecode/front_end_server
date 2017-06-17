@@ -62,7 +62,7 @@
         position: fixed;
         z-index: 999;
         height: 40px;
-        transition: all .2s ease;
+        transition: all .1s ease;
         top: 0;
         left: 0;
         right: 0;
@@ -100,7 +100,7 @@
         transition: all .2s ease-in;
     }
     .fade-enter, .fade-leave-active {
-        transform: translateY(20px);
+        transform: translateY(-10px);
         opacity: 0;
     }
 </style>

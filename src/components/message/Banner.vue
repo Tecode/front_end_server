@@ -5,7 +5,7 @@
                 <div class="clearfix time_box">
                     <h1 class="text-center">23:20</h1>
                     <h3 class="text-center">晚上好，欢迎留言与反馈</h3>
-                    <p class="text-center">该背景为Canvers绘图，请使用高版本浏览器。</p>
+                    <p class="text-center">提示：只有用户处于登录状态才可以留言反馈</p>
                 </div>
             </div>
         </div>

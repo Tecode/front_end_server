@@ -76,6 +76,7 @@
                 outline: none;
                 font-size: 14px;
                 padding-top: 8px;
+                border: 1px solid @color204;
                 color: #223343;
                 border-radius: 8px;
                 text-indent: .5em;
