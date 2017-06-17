@@ -51,7 +51,7 @@
         }
         background-color: @color556;
         padding: 40px 0;
-        margin: 45px 0;
+        margin: 45px 0 0 0;
         .QR_qq{
             background: url("../../imgs/qq_QRcode.jpg")0 0 no-repeat;
             background-size: 128px;

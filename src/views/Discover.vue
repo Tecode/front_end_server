@@ -4,27 +4,45 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 item_box">
-                    <single-item></single-item>
-                    <single-item></single-item>
-                    <single-item></single-item>
-                    <single-item></single-item>
-                    <single-item></single-item>
-                    <single-item></single-item>
-                    <single-item></single-item>
+                    <div>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                        <single-item></single-item>
+                    </div>
+                    <div class="page-pagination text-center">
+                        <el-pagination
+                                layout="prev, pager, next"
+                                :total="50">
+                        </el-pagination>
+                    </div>
                 </div>
             </div>
         </div>
+        <nav-footer></nav-footer>
     </div>
 </template>
 
 <script>
     import Banner from '../components/discoverer/Banner.vue'
     import SingleItem from '../components/common/SingleItem.vue'
+    import NavFooter from '../components/common/Footer.vue'
 	export default {
 		name: 'comment',
 			components: {
 			Banner,
-			SingleItem
+			SingleItem,
+			NavFooter
 			},
 		props: ['id'],
 		data () {
@@ -41,6 +59,9 @@
     @import "../lib/style/color";
     .discover_box{
         margin-top: 60px;
+        .page-pagination {
+            padding: 30px 0 0 0;
+        }
         .item_box{
             background-color: @white100;
             padding: 10px 0;
