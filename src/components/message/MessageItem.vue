@@ -75,6 +75,7 @@
                 height: 100px;
                 outline: none;
                 font-size: 14px;
+                padding-top: 8px;
                 color: #223343;
                 border-radius: 8px;
                 text-indent: .5em;

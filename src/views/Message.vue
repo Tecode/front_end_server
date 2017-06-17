@@ -49,7 +49,6 @@
     @import "../lib/style/color";
 
     .mesege_box {
-        margin-top: 60px;
         background-color: @white100;
         .page-pagination {
             padding: 60px 0 0 0;

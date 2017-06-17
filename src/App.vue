@@ -53,12 +53,15 @@
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
+    .view{
+        margin-top: 40px;
+    }
     .header{
         border-bottom:1px solid #ffcd19;
         background-color: @background-color50;
         position: fixed;
         z-index: 999;
-        height: 60px;
+        height: 40px;
         transition: all .2s ease;
         top: 0;
         left: 0;
@@ -68,7 +71,7 @@
             background-size: 120px;
             width: 120px;
             height: 30px;
-            margin: 12px 31px 0 0
+            margin: 6px 31px 0 0
         }
         a{
             font-size: 15px;
@@ -78,9 +81,9 @@
         }
         .nav_link{
             padding: 0 11px 0 11px;
-            height: 60px;
+            height: 40px;
             display: block;
-            line-height: 4em;
+            line-height: 3em;
             &:hover{
                 background-color: @background-color150;
                 color: @white;

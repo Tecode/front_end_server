@@ -58,7 +58,6 @@
 <style lang="less">
     @import "../lib/style/color";
     .discover_box{
-        margin-top: 60px;
         .page-pagination {
             padding: 30px 0 0 0;
         }
