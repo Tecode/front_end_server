@@ -3,8 +3,8 @@
         <div class="content">
             <div class="_box">
                 <div class="clearfix time_box">
-                    <h1 class="text-center">23:20</h1>
-                    <h3 class="text-center">晚上好，欢迎留言与反馈</h3>
+                    <h1 class="text-center">{{currentTime}}</h1>
+                    <h3 class="text-center">{{currentStatus}}好，欢迎留言与反馈</h3>
                     <p class="text-center">提示：只有用户处于登录状态才可以留言反馈</p>
                 </div>
             </div>
@@ -13,17 +13,26 @@
 </template>
 
 <script>
-    import MessageItem from '../../components/message/MessageItem.vue'
+	import moment from 'moment';
+	moment.locale('zh-cn');
+	import MessageItem from '../../components/message/MessageItem.vue'
 	export default {
 		name: 'banner',
 		props: ['id'],
-		components:{
-		    MessageItem
-        },
+		components: {
+			MessageItem
+		},
 		data () {
 			return {
-				open: true
+				currentTime: '00:00',
+				currentStatus: '早上'
 			}
+		},
+		created: function () {
+			setInterval(() => {
+				this.currentTime = moment().format('HH:mm');
+				this.currentStatus = moment().format('a');
+			}, 1000);
 		},
 		computed: {},
 		methods: {}
@@ -32,28 +41,29 @@
 
 <style lang="less" scoped>
     @import "../../lib/style/color";
-    .banner{
+
+    .banner {
         height: 540px;
         background-color: #223343;
         position: relative;
-        ._box{
+        ._box {
             position: absolute;
             top: 160px;
             left: 50%;
             margin-left: -390px;
-            .time_box{
-                h1{
+            .time_box {
+                h1 {
                     font-size: 120px;
                     font-weight: 400;
                     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                     color: @white;
                 }
-                h3{
+                h3 {
                     font-weight: normal;
                     color: @white;
                     padding: .6em 0;
                 }
-                p{
+                p {
                     color: @white;
                 }
                 width: 780px;
