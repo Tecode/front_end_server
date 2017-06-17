@@ -5,7 +5,7 @@
         </h3>
         <div class="container">
             <div class="row">
-                <ul class="col-md-8 col-md-offset-2 time-line">
+                <ul class="col-md-7 col-md-offset-3 time-line">
                     <li>
                         <update-log-item></update-log-item>
                     </li>
