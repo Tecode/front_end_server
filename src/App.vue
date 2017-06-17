@@ -5,7 +5,9 @@
                 <div class="row">
                     <div class="col-md-12 clearfix">
                         <router-link to="/" exact>
-                            <div class="logo_lage"></div>
+                            <div class="logo_lage">
+                                <span>Dev</span>
+                            </div>
                         </router-link>
                         <router-link class="nav_link" v-bind:class="{'active' :fullPath.length === 1}" to="/">首页</router-link>
                         <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}" to="/discover">发现</router-link>
@@ -23,15 +25,20 @@
                 </div>
             </div>
         </div>
+        <login-item></login-item>
             <transition name="fade" mode="out-in">
                 <router-view class="view"></router-view>
             </transition>
     </div>
 </template>
 <script>
+    import LoginItem from './components/bombBox/LoginItem.vue'
 	export default {
 		name: 'app',
 		props: ['id'],
+        components: {
+			LoginItem
+        },
 //        beforeRouteUpdate: function () {
 //            console.log(this.$route.fullPath);
 //        },
@@ -67,11 +74,22 @@
         left: 0;
         right: 0;
         .logo_lage{
+            position: relative;
             background: url("imgs/logo_lage.png")0 0 no-repeat;
             background-size: 120px;
             width: 120px;
             height: 30px;
-            margin: 6px 31px 0 0
+            margin: 6px 31px 0 0;
+            span{
+                position: absolute;
+                top: -2px;
+                right: -2.2em;
+                background-color: #f3401d;
+                color: #ffffff;
+                padding: 1px 5px;
+                border-radius: 99px;
+                font-size: 12px;
+            }
         }
         a{
             font-size: 15px;
