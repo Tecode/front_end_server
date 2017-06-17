@@ -19,6 +19,14 @@
                 <p class="content">
                     换不厌的春秋和一个等不到的人，错乱我的四季。 每段旅程都会有一个你爱的人，就像双手不会主动拒绝温暖的十指紧扣。
                 </p>
+                <div class="write_box">
+                    <label for="write_box"></label>
+                    <textarea id="write_box"></textarea>
+                    <div class="button clearfix">
+                        <span class="tips pull-left">回复的内容不能为空且不能小于2个字符！</span>
+                        <span class="call pull-right">回复</span>
+                    </div>
+                </div>
             </li>
             <li>
                 <div class="portrait_box clearfix">
@@ -57,6 +65,48 @@
 <style lang="less" scoped>
     @import "../../lib/style/color";
     .message_item{
+        .write_box{
+            max-width: 680px;
+            margin: 20px 0;
+            textarea{
+                width: 676px;
+                margin-left: 4px;
+                resize: none;
+                height: 100px;
+                outline: none;
+                font-size: 14px;
+                color: #223343;
+                border-radius: 8px;
+                text-indent: .5em;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            }
+            .button{
+                margin: 10px 0;
+                .call{
+                    color: @background-color50;
+                    border: 1px solid @background-color50;
+                    padding: 2px 15px 2px 30px;
+                    border-radius: @border-radius6;
+                    background: url("../../imgs/icon_paperplane_w.png")10px 4px no-repeat;
+                    background-size: 16px;
+                    cursor: pointer;
+                    transition: all .2s;
+                    &:hover{
+                        background: url("../../imgs/icon_paperplane_black.png")10px 4px no-repeat;
+                        background-size: 16px;
+                        background-color: @background-color50;
+                        color: #24283b;
+                    }
+                }
+                .tips{
+                    margin-left: 4px;
+                    margin-top: 2px;
+                    padding-left: 20px;
+                    background: url("../../imgs/icon_Info_b.png")0 2px no-repeat;
+                    background-size: 17px;
+                }
+            }
+        }
         .title_box{
             position: relative;
             .bliuld{
@@ -85,7 +135,7 @@
             font-weight: 400;
         }
         ul li{
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 25px;
         }
         .portrait_box{
