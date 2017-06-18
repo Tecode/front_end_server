@@ -19,7 +19,7 @@
                     </li>
                     <li class="submit">
                         <label for="submit"></label>
-                        <input type="button" value="立即登录" id="submit"/>
+                        <input type="button" value="开发阶段此功能不开放" id="submit"/>
                     </li>
                 </ul>
             </div>
