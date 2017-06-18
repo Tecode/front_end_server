@@ -6,7 +6,7 @@ import { sync } from 'vuex-router-sync'
 import titleMixin from './util/title'
 import * as filters from './util/filters'
 // 引入饿了吗的ui
-import 'element-ui/lib/theme-default/pagination.css'
+import 'static/styles/pagination.min.css'
 import {
 	Pagination,
 } from 'element-ui'
