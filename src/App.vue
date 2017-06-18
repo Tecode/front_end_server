@@ -15,8 +15,8 @@
                         <router-link class="nav_link" :class="{active : activeNav === '/message'}" to="/message">留言</router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/updatelog'}" to="/updatelog">更新日志</router-link>
                         <div class="pull-right">
-                            <a href="https://www.soscoon.com/login" class="nav_link">登录</a>
-                            <a href="https://www.soscoon.com/register" class="nav_link">注册</a>
+                            <a @click="loginRegistration('login')" class="nav_link">登录</a>
+                            <a @click="loginRegistration('registration')" class="nav_link">注册</a>
                         </div>
                         <!--<div class="pull-right">-->
                         <!--<a class="nav_link">欢迎你，aming!</a>-->
@@ -57,7 +57,8 @@
 //				changeName: 'changeName'
 			}),
 			...mapMutations({
-				listenerRouting: 'listenerRouting' // 映射 this.listenerRouting() 为 this.$store.commit('listenerRouting')
+				listenerRouting: 'listenerRouting', // 映射 this.listenerRouting() 为 this.$store.commit('listenerRouting')
+			    loginRegistration: 'loginRegistration'
 			}),
 			fetchData(){
 				this.listenerRouting(this.$route.fullPath);
@@ -134,6 +135,7 @@
             display: block;
             line-height: 3em;
             transition: all .2s;
+            cursor: pointer;
             &:hover {
                 //background-color: @background-color150;
                 color: @white;

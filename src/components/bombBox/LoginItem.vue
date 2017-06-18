@@ -1,9 +1,9 @@
 <template>
-    <div style="visibility: hidden">
+    <div class="mask_box" :style = {visibility:boxStatus,opacity:boxOpacity}>
         <div class="mask"></div>
         <div class="login">
             <div class="box_header">
-                <div class="close"></div>
+                <div class="close" @click="closePopup"></div>
             </div>
             <div class="box_body">
                 <ul>
@@ -28,12 +28,14 @@
 </template>
 
 <script>
+    import {mapMutations} from 'vuex'
+    import {mapState} from 'vuex'
 	export default {
 		name: 'comment',
 		props: ['id'],
 		data () {
 			return {
-				open: true
+                isHiden: true
 			}
 		},
 		mounted(){
@@ -42,13 +44,25 @@
 //			    document.body.style.overflow = null;
 //            },3000)
         },
-		computed: {},
-		methods: {}
+		computed: {
+        ...mapState({
+            boxStatus: state => state.LoginRegistration.boxStatus,
+			boxOpacity: state => state.LoginRegistration.boxOpacity,
+        }),
+		},
+		methods: {
+		...mapMutations({
+		    closePopup: 'closePopup',
+		}),
+        }
 	}
 </script>
 
 <style lang="less" scoped>
     @import "../../lib/style/color";
+    .mask_box{
+        /*transition: all .4s;*/
+    }
     .mask{
         position: fixed;
         top: 0;

@@ -9,10 +9,10 @@ const LoginRegistration = {
 		}
 	},
 	actions: {
-		changeName({state, commit, rootState}, value){
-			console.log(value);
-			commit('increment');
-		}
+		// changeName({state, commit, rootState}, value){
+		// 	console.log(value);
+		// 	commit('increment');
+		// }
 	},
 	getters: {
 		// doneTodosCount () {
