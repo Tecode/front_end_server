@@ -9,62 +9,80 @@
                                 <span>Dev</span>
                             </div>
                         </router-link>
-                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.length === 1}" to="/">首页</router-link>
-                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}" to="/discover">发现</router-link>
+                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.length === 1}" to="/">首页
+
+                        </router-link>
+                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}"
+                                     to="/discover">发现
+
+                        </router-link>
                         <router-link class="nav_link" to="/share">分享</router-link>
                         <router-link class="nav_link" to="/message">留言</router-link>
                         <router-link class="nav_link" to="/updatelog">更新日志</router-link>
                         <div class="pull-right">
-                        <a href="https://www.soscoon.com/login" class="nav_link">登录</a>
-                        <a href="https://www.soscoon.com/register" class="nav_link">注册</a>
+                            <a href="https://www.soscoon.com/login" class="nav_link">登录</a>
+                            <a href="https://www.soscoon.com/register" class="nav_link">注册</a>
                         </div>
                         <!--<div class="pull-right">-->
-                            <!--<a class="nav_link">欢迎你，aming!</a>-->
+                        <!--<a class="nav_link">欢迎你，aming!</a>-->
                         <!--</div>-->
                     </div>
                 </div>
             </div>
         </div>
         <login-item></login-item>
-            <transition name="fade" mode="out-in">
-                <router-view class="view"></router-view>
-            </transition>
+        <transition name="fade" mode="out-in">
+            <router-view class="view"></router-view>
+        </transition>
     </div>
 </template>
 <script>
-    import LoginItem from './components/bombBox/LoginItem.vue'
+	import LoginItem from './components/bombBox/LoginItem.vue'
+	import {mapState} from 'vuex'
 	export default {
 		name: 'app',
 		props: ['id'],
-        components: {
+		components: {
 			LoginItem
-        },
-//        beforeRouteUpdate: function () {
-//            console.log(this.$route.fullPath);
-//        },
-//		created: function () {
-//			console.log(this.$route);
-//		},
+		},
+		computed: {
+        ...mapState(
+			['name']
+            )
+		},
+		methods: {
+//			...mapActions([
+//				'some/nested/module/foo',
+//				'some/nested/module/bar'
+//			])
+		},
+		created: function () {
+			const a = [1, 2];
+			const b = [...a, 45];
+			console.log(b);
+			console.log(this.$store.state.LoginRegistration.name);
+		},
 		data () {
 			return {
-			    fullPath: this.$route.fullPath
+				fullPath: this.$route.fullPath
 			}
 		},
-		computed: {},
-		methods: {}
 	}
 </script>
 <style lang="less">
     @import "lib/style/global";
     @import "lib/style/color";
+
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
-    .view{
+
+    .view {
         margin-top: 40px;
     }
-    .header{
-        border-bottom:1px solid #ffcd19;
+
+    .header {
+        border-bottom: 1px solid #ffcd19;
         background-color: @background-color50;
         position: fixed;
         z-index: 999;
@@ -73,14 +91,14 @@
         top: 0;
         left: 0;
         right: 0;
-        .logo_lage{
+        .logo_lage {
             position: relative;
-            background: url("imgs/logo_lage.png")0 0 no-repeat;
+            background: url("imgs/logo_lage.png") 0 0 no-repeat;
             background-size: 120px;
             width: 120px;
             height: 30px;
             margin: 6px 31px 0 0;
-            span{
+            span {
                 position: absolute;
                 top: -2px;
                 right: -2.2em;
@@ -91,32 +109,34 @@
                 font-size: 12px;
             }
         }
-        a{
+        a {
             font-size: 15px;
             float: left;
             color: @color400;
             text-decoration: none;
         }
-        .nav_link{
+        .nav_link {
             padding: 0 11px 0 11px;
             height: 40px;
             display: block;
             line-height: 3em;
-            &:hover{
+            &:hover {
                 background-color: @background-color150;
                 color: @white;
             }
         }
-        .active{
+        .active {
             color: @white;
-            background: url("imgs/icon_tag.png")center bottom no-repeat;
+            background: url("imgs/icon_tag.png") center bottom no-repeat;
             background-size: 12px;
             background-color: @background-color150;
         }
     }
+
     .fade-enter-active, .fade-leave-active {
         transition: all .2s ease-in;
     }
+
     .fade-enter, .fade-leave-active {
         transform: translateY(-10px);
         opacity: 0;
