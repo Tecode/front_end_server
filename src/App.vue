@@ -9,16 +9,11 @@
                                 <span>Dev</span>
                             </div>
                         </router-link>
-                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.length === 1}" to="/">首页
-
-                        </router-link>
-                        <router-link class="nav_link" v-bind:class="{'active' :fullPath.indexOf('/discoverer') > -1}"
-                                     to="/discover">发现
-
-                        </router-link>
-                        <router-link class="nav_link" to="/share">分享</router-link>
-                        <router-link class="nav_link" to="/message">留言</router-link>
-                        <router-link class="nav_link" to="/updatelog">更新日志</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/'}" to="/">首页</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/discover'}" to="/discover">发现</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/share'}" to="/share">分享</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/message'}" to="/message">留言</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/updatelog'}" to="/updatelog">更新日志</router-link>
                         <div class="pull-right">
                             <a href="https://www.soscoon.com/login" class="nav_link">登录</a>
                             <a href="https://www.soscoon.com/register" class="nav_link">注册</a>
@@ -39,6 +34,10 @@
 <script>
 	import LoginItem from './components/bombBox/LoginItem.vue'
 	import {mapState} from 'vuex'
+	import {mapActions} from 'vuex'
+	import {mapGetters} from 'vuex'
+    import {mapMutations} from 'vuex'
+
 	export default {
 		name: 'app',
 		props: ['id'],
@@ -46,26 +45,39 @@
 			LoginItem
 		},
 		computed: {
-        ...mapState(
-			['name']
-            )
+			...mapState({
+				activeNav: state => state.NavHeader.activeNav,
+			}),
+			...mapGetters({
+				doneTodosCount: 'doneTodosCount'
+			})
 		},
 		methods: {
-//			...mapActions([
-//				'some/nested/module/foo',
-//				'some/nested/module/bar'
-//			])
+			...mapActions({
+//				changeName: 'changeName'
+			}),
+			...mapMutations({
+				listenerRouting: 'listenerRouting' // 映射 this.listenerRouting() 为 this.$store.commit('listenerRouting')
+			}),
+			fetchData(){
+				this.listenerRouting(this.$route.fullPath);
+			}
 		},
 		created: function () {
-			const a = [1, 2];
-			const b = [...a, 45];
-			console.log(b);
-			console.log(this.$store.state.LoginRegistration.name);
+			this.listenerRouting(this.$route.fullPath);
+//			console.log(this.name);
+//			console.log(this.changeName(3662), 'changeName');
+//			console.log(this.doneTodosCount, 'doneTodosCount');
+//			console.log(this.fullPath, 'fullPath---------------');
 		},
 		data () {
 			return {
 				fullPath: this.$route.fullPath
 			}
+		},
+		watch: {
+			// 如果路由有变化，会再次执行该方法
+			'$route': 'fetchData'
 		},
 	}
 </script>
@@ -114,14 +126,16 @@
             float: left;
             color: @color400;
             text-decoration: none;
+            transition: all .2s;
         }
         .nav_link {
             padding: 0 11px 0 11px;
             height: 40px;
             display: block;
             line-height: 3em;
+            transition: all .2s;
             &:hover {
-                background-color: @background-color150;
+                //background-color: @background-color150;
                 color: @white;
             }
         }
