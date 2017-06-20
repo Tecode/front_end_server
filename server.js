@@ -6,6 +6,7 @@ const favicon = require('serve-favicon');
 const compression = require('compression');
 const resolve = file => path.resolve(__dirname, file);
 const { createBundleRenderer } = require('vue-server-renderer');
+const useragent = require('express-useragent');
 
 const isProd = process.env.NODE_ENV === 'production';
 const useMicroCache = process.env.MICRO_CACHE !== 'false';
@@ -58,6 +59,7 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 });
 
+app.use(useragent.express());
 app.use(compression({ threshold: 0 }));
 app.use(favicon('./public/logo-48.png'));
 app.use('/dist', serve('./dist', true));
@@ -125,6 +127,12 @@ function render (req, res) {
 }
 
 app.get('*', isProd ? render : (req, res) => {
+	console.log(req.useragent, '------------------');
+	let ip = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	if (ip.substr(0, 7) === "::ffff:") {
+		ip = ip.substr(7)
+	}
+	console.log('ip', ip);
   readyPromise.then(() => render(req, res))
 });
 
