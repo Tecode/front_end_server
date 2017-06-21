@@ -7,6 +7,7 @@ const compression = require('compression');
 const resolve = file => path.resolve(__dirname, file);
 const { createBundleRenderer } = require('vue-server-renderer');
 const useragent = require('express-useragent');
+const axios = require('axios');
 
 const isProd = process.env.NODE_ENV === 'production';
 const useMicroCache = process.env.MICRO_CACHE !== 'false';
@@ -81,7 +82,25 @@ const microCache = LRU({
 const isCacheable = req => useMicroCache;
 
 function render (req, res) {
+	// axios全局配置
+	axios.defaults.headers.common['Content-Type'] = 'application/json';
+	axios.defaults.headers.common['aming-token'] = '61565544';
+
+	// 拦截请求
+	axios.interceptors.response.use(function (response) {
+		// Do something with response data
+		return response;
+	}, function (error) {
+		// Do something with response error
+		return Promise.reject(error);
+	});
+
   const s = Date.now();
+
+	let ip = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	if (ip.substr(0, 7) === "::ffff:") {
+		ip = ip.substr(7)
+	}
 
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Server", serverInfo);
@@ -127,7 +146,7 @@ function render (req, res) {
 }
 
 app.get('*', isProd ? render : (req, res) => {
-	console.log(req.useragent, '------------------');
+	// console.log(req.useragent, '------------------');
 	let ip = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 	if (ip.substr(0, 7) === "::ffff:") {
 		ip = ip.substr(7)

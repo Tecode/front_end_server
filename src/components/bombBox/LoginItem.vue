@@ -1,25 +1,26 @@
 <template>
-    <div class="mask_box" :style = {visibility:boxStatus,opacity:boxOpacity}>
-        <div class="mask"></div>
-        <div class="login">
+    <div class="mask_box">
+        <div class="mask" :class="{show: boxStatus === 'visible'}"></div>
+        <div class="login" :class="{show: boxStatus === 'visible'}">
             <div class="box_header">
                 <div class="close" @click="closePopup"></div>
             </div>
-            <div class="box_body">
+            <div class="box_body" :class="{padding_bot: !loading}">
                 <ul>
                     <li class="user_input">
-                        <label for="user"></label>
-                        <input id="user" placeholder="邮箱账号"/>
-                        <p class="error_tips">用户名错误</p>
+                        <label for="user_email"></label>
+                        <input id="user_email" @input="inputContent" v-model="user_email" placeholder="邮箱账号"/>
+                        <p class=""></p>
                     </li>
                     <li class="user_password">
                         <label for="password"></label>
-                        <input id="password" type="password" placeholder="输入登录密码"/>
-                        <p class="error_tips">用户名错误</p>
+                        <input id="password" v-model="password" @input="inputContent" type="password" placeholder="输入登录密码"/>
+                        <p :class="{error_tips:isError}">{{data.error}}</p>
                     </li>
                     <li class="submit">
                         <label for="submit"></label>
-                        <input type="button" value="开发阶段此功能不开放" id="submit"/>
+                        <input type="button" @click="loginRequest" value="立即登录" id="submit"/>
+                        <loading-line v-if="loading"></loading-line>
                     </li>
                 </ul>
             </div>
@@ -28,42 +29,49 @@
 </template>
 
 <script>
-    import {mapMutations} from 'vuex'
-    import {mapState} from 'vuex'
+	import {mapMutations} from 'vuex';
+	import {mapState} from 'vuex';
+    import {mapActions} from 'vuex';
+    import LoadingLine from '../../components/common/LoadingLine.vue';
+
 	export default {
 		name: 'comment',
+		components:{
+			LoadingLine
+        },
 		props: ['id'],
 		data () {
 			return {
-                isHiden: true
+				isHiden: true
 			}
 		},
-		mounted(){
-//			document.body.style.overflow = 'hidden';
-//			setTimeout( () => {
-//			    document.body.style.overflow = null;
-//            },3000)
-        },
 		computed: {
-        ...mapState({
-            boxStatus: state => state.LoginRegistration.boxStatus,
-			boxOpacity: state => state.LoginRegistration.boxOpacity,
-        }),
+			...mapState({
+				boxStatus: state => state.LoginRegistration.boxStatus,
+				boxOpacity: state => state.LoginRegistration.boxOpacity,
+				loading: state => state.LoginRegistration.loading,
+				isError: state => state.LoginRegistration.isError,
+				data: state => state.LoginRegistration.data,
+				user_email: state => state.LoginRegistration.user_email,
+				password: state => state.LoginRegistration.password,
+			}),
 		},
 		methods: {
-		...mapMutations({
-		    closePopup: 'closePopup',
-		}),
-        }
+			...mapMutations({
+				closePopup: 'closePopup',
+				inputContent: 'inputContent',
+			}),
+			...mapActions({
+				loginRequest: 'loginRequest'
+			})
+		},
 	}
 </script>
 
 <style lang="less" scoped>
     @import "../../lib/style/color";
-    .mask_box{
-        /*transition: all .4s;*/
-    }
-    .mask{
+
+    .mask {
         position: fixed;
         top: 0;
         left: 0;
@@ -71,69 +79,82 @@
         height: 100%;
         background-color: rgba(0, 0, 0, .5);
         z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s;
     }
-    .login{
+
+    .login {
         border-radius: @border-radius6;
         overflow: hidden;
         position: fixed;
-        top: 60px;
+        top: 15%;
         left: 50%;
         margin-left: -160px;
         z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s;
         box-shadow: 0 6px 38px 3px rgba(0, 0, 0, 0.4);
-        .box_header{
+        .box_header {
             width: 320px;
             height: 50px;
-            background: url("../../imgs/logo_lage.png")center center no-repeat;
+            background: url("../../imgs/logo_lage.png") center center no-repeat;
             background-size: 100px;
             background-color: @background-color50;
-            .close{
+            .close {
                 position: absolute;
                 top: 16px;
                 right: 10px;
-                background: url("../../imgs/close_button.png")0 0 no-repeat;
+                background: url("../../imgs/close_button.png") 0 0 no-repeat;
                 background-size: 15px;
                 width: 15px;
                 height: 15px;
                 transition: all .4s ease-out;
                 cursor: pointer;
-                &:hover{
-                    transform:rotate(-180deg);
+                &:hover {
+                    transform: rotate(-180deg);
                 }
             }
         }
-        .box_body{
+        .box_body {
             background-color: @white;
-            padding: 20px 0 40px 0;
-            li{
+            padding: 20px 0 20px 0;
+            transition: all .4s;
+            li {
                 width: 260px;
                 margin: 0 auto;
-                input{
+                input {
                     border: 1px solid @background-color50;
                     outline: none;
                     border-radius: @border-radius6;
-                    padding: 7px 5px 3px 35px;
+                    padding: 5px 5px 3px 35px;
                     width: 218px;
                     height: 25px;
                     color: @background-color50;
-                    font-size: 16px;
+                    font-size: 14px;
                     line-height: 1.4em;
                     transition: all .4s;
-                    &:focus{
+                    &:focus {
                         color: @text100;
                     }
                 }
-                .error_tips{
-                    background: url("../../imgs/icon_remind.png")0 1px no-repeat;
+                .error_tips {
+                    background: url("../../imgs/icon_remind.png") 0 1px no-repeat;
                     background-size: 16px;
                     font-size: 14px;
                     padding-left: 18px;
                     color: @error;
-                    margin: 8px 0 10px 0;
+                    margin: 4px 0 5px 0;
                 }
             }
-            .submit{
-                input{
+            p {
+                height: 19px;
+                padding-left: 18px;
+                margin: 4px 0 5px 0;
+            }
+            .submit {
+                input {
                     border: none;
                     background-color: @background-color50;
                     width: 260px;
@@ -142,23 +163,31 @@
                     color: @text100;
                     cursor: pointer;
                     transition: all .2s;
-                    &:hover{
+                    &:hover {
                         background-color: #fee14c;
                     }
                 }
             }
-            .user_input{
-                input{
-                    background: url("../../imgs/icon_user.png")10px center no-repeat;
+            .user_input {
+                input {
+                    background: url("../../imgs/icon_user.png") 10px center no-repeat;
                     background-size: 16px;
                 }
             }
-            .user_password{
-                input{
-                    background: url("../../imgs/icon_lock.png")10px center no-repeat;
+            .user_password {
+                input {
+                    background: url("../../imgs/icon_lock.png") 10px center no-repeat;
                     background-size: 16px;
                 }
             }
         }
+        .padding_bot{
+            padding-bottom: 40px;
+        }
+    }
+
+    .show {
+        opacity: 1;
+        visibility: visible;
     }
 </style>

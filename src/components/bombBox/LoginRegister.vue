@@ -1,18 +1,27 @@
 <template>
-
+    <div>
+        <login-item v-show="boxType === 'login'"></login-item>
+        <register-item v-show="boxType === 'registration'"></register-item>
+    </div>
 </template>
 
 <script>
+	import LoginItem from './LoginItem.vue';
+	import RegisterItem from './RegisterItem.vue';
+	import { mapState } from 'vuex';
+
 	export default {
-		name: 'comment',
-		props: ['id'],
-		data () {
-			return {
-				open: true
-			}
+		name: 'loginRegister',
+		components: {
+			LoginItem,
+			RegisterItem
 		},
-		computed: {},
-		methods: {}
+		props: ['id'],
+		computed: {
+			...mapState({
+				boxType: state => state.LoginRegistration.boxType,
+			}),
+		},
 	}
 </script>
 

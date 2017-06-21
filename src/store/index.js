@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 // 单个模块
-import LoginRegistration from './modle/LoginRegistration';
-import NavHeader from './modle/NavHeader';
+import LoginRegistration from './modules/LoginRegistration';
+import NavHeader from './modules/NavHeader';
 
 Vue.use(Vuex);
 

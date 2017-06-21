@@ -10,10 +10,15 @@
                             </div>
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/'}" to="/">首页</router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/discover'}" to="/discover">发现</router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/share'}" to="/share">分享</router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/message'}" to="/message">留言</router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/updatelog'}" to="/updatelog">更新日志</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/discover'}" to="/discover">发现
+                        </router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/share'}" to="/share">分享
+                        </router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/message'}" to="/message">留言
+                        </router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/updatelog'}" to="/updatelog">
+                            更新日志
+                        </router-link>
                         <div class="pull-right">
                             <a @click="loginRegistration('login')" class="nav_link">登录</a>
                             <a @click="loginRegistration('registration')" class="nav_link">注册</a>
@@ -25,24 +30,24 @@
                 </div>
             </div>
         </div>
-        <login-item></login-item>
+        <login-register></login-register>
         <transition name="fade" mode="out-in">
             <router-view class="view"></router-view>
         </transition>
     </div>
 </template>
 <script>
-	import LoginItem from './components/bombBox/LoginItem.vue'
-	import {mapState} from 'vuex'
-	import {mapActions} from 'vuex'
-	import {mapGetters} from 'vuex'
-    import {mapMutations} from 'vuex'
+	import LoginRegister from './components/bombBox/LoginRegister.vue';
+	import {mapState} from 'vuex';
+	import {mapActions} from 'vuex';
+	import {mapGetters} from 'vuex';
+	import {mapMutations} from 'vuex';
 
 	export default {
 		name: 'app',
 		props: ['id'],
 		components: {
-			LoginItem
+			LoginRegister
 		},
 		computed: {
 			...mapState({
@@ -58,7 +63,7 @@
 			}),
 			...mapMutations({
 				listenerRouting: 'listenerRouting', // 映射 this.listenerRouting() 为 this.$store.commit('listenerRouting')
-			    loginRegistration: 'loginRegistration'
+				loginRegistration: 'loginRegistration'
 			}),
 			fetchData(){
 				this.listenerRouting(this.$route.fullPath);
