@@ -1,10 +1,11 @@
+import { listenerRouting } from '../actionTypes';
 
 const LoginRegistration = {
 	state: {
 		activeNav: '/'
 	},
 	mutations: {
-		listenerRouting (state, val) {
+		[listenerRouting](state, val) {
 			state.activeNav = val;
 		}
 	},

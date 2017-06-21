@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 // 单个模块
 import LoginRegistration from './modules/LoginRegistration';
 import NavHeader from './modules/NavHeader';
+import Message from './modules/Message';
 
 Vue.use(Vuex);
 
@@ -11,6 +12,7 @@ export function createStore () {
 		modules: {
 			LoginRegistration: LoginRegistration,
 			NavHeader: NavHeader,
+			Message:Message,
 		}
   })
 }

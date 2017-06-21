@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const loginRequest = (param) => {
+export const loginRequestApi = (param) => {
 	return axios.post('/application/api/login', param);
 };

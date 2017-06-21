@@ -31,6 +31,7 @@
             </div>
         </div>
         <login-register></login-register>
+        <message></message>
         <transition name="fade" mode="out-in">
             <router-view class="view"></router-view>
         </transition>
@@ -38,6 +39,7 @@
 </template>
 <script>
 	import LoginRegister from './components/bombBox/LoginRegister.vue';
+	import Message from './components/common/Message.vue';
 	import {mapState} from 'vuex';
 	import {mapActions} from 'vuex';
 	import {mapGetters} from 'vuex';
@@ -47,7 +49,8 @@
 		name: 'app',
 		props: ['id'],
 		components: {
-			LoginRegister
+			LoginRegister,
+			Message
 		},
 		computed: {
 			...mapState({
